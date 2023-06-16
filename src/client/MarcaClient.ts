@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { Marca } from "@/model/marca";
 
-export class CondutorClient{
+export class MarcaClient{
     private axiosClient : AxiosInstance;
 
     constructor(){
