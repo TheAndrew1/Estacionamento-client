@@ -1,9 +1,17 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import Header from '@/components/Header.vue'
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    Header,
+  }
+});
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/listar-marca">Marcas</router-link>
-  </nav>
+  <Header />
   <router-view/>
 </template>
 

@@ -8,22 +8,33 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/listar-condutor',
+    name: 'listar-condutor',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-  ,
+  },
   {
     path: '/listar-marca',
     name: 'listar-marca',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/marca/MarcaLisstaView.vue')
-  }
+    component: () => import('@/views/marca/MarcaListaView.vue')
+  },
+  {
+    path: '/listar-modelo',
+    name: 'listar-modelo',
+    component: () => import('@/views/marca/MarcaListaView.vue')
+  },
+  {
+    path: '/listar-veiculo',
+    name: 'listar-veiculo',
+    component: () => import('@/views/marca/MarcaListaView.vue')
+  },
+  {
+    path: '/configuracao',
+    name: 'configuracao',
+    component: () => import('@/views/marca/MarcaListaView.vue')
+  },
 ]
 
 const router = createRouter({
