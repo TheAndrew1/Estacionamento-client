@@ -16,7 +16,6 @@ export default defineComponent({
 </template>
 
 <style lang="scss">
-$primary: #900;
 $enable-shadows: true;
 $prefix: "mo-";
 

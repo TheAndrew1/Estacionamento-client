@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/vue/HomeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'listar-movimentacao',
+    component: () => import('@/views/movimentacao/MovimentacaoListaView.vue')
   },
   {
     path: '/listar-condutor',
@@ -13,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/vue/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/condutor/CondutorListaView.vue')
   },
   {
     path: '/listar-marca',
@@ -23,17 +22,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/listar-modelo',
     name: 'listar-modelo',
-    component: () => import('@/views/marca/MarcaListaView.vue')
+    component: () => import('@/views/modelo/ModeloListaView.vue')
   },
   {
     path: '/listar-veiculo',
     name: 'listar-veiculo',
-    component: () => import('@/views/marca/MarcaListaView.vue')
+    component: () => import('@/views/veiculo/VeiculoListaView.vue')
   },
   {
     path: '/configuracao',
     name: 'configuracao',
-    component: () => import('@/views/marca/MarcaListaView.vue')
+    component: () => import('@/views/configuracao/ConfiguracaoListaView.vue')
   },
 ]
 
