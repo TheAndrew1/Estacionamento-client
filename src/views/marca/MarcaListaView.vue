@@ -1,9 +1,22 @@
 <script lang="ts">
+import { defineComponent } from 'vue';
+import { Marca } from '@/model/marca';
+import { MarcaClient } from '@/client/MarcaClient'
 
+export default defineComponent({
+  name: 'ListaMarca',
+  data(){
+    return{
+      marcaClient: MarcaClient,
+      marca: Marca
+    }
+  }
+});
 </script>
 
 <template>
-    <table class="table">
+  <button class="">Cadastrar</button>
+  <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>

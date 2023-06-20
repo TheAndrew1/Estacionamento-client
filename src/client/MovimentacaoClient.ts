@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { Movimentacao } from "@/model/movimentacao";
 
-export class CondutorClient{
+export class MovimentacaoClient{
     private axiosClient : AxiosInstance;
 
     constructor(){
