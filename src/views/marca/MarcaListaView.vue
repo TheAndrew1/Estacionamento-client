@@ -21,7 +21,7 @@ export default defineComponent({
         <h2>Listar Marca</h2>
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-success rounded-0">Cadastrar</button>
+        <router-link to="/formulario-marca"><button type="button" class="btn btn-success rounded-0">Cadastrar</button></router-link>
       </div>
     </div>
   </div>

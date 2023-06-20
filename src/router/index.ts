@@ -17,7 +17,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/listar-marca',
     name: 'listar-marca',
-    component: () => import('@/views/marca/MarcaListaView.vue')
+    component: () => import('@/views/marca/MarcaListaView.vue'),
+    children: 
+    [{
+      // UserProfile will be rendered inside User's <router-view>
+      // when /user/:id/profile is matched
+      path: 'formulario',
+      component: () => import('@/views/marca/MarcaFormView.vue')
+    }]
+  },
+  {
+    path: '/formulario-marca',
+    name: 'formulario-marca',
+    component: () => import('@/views/marca/MarcaFormView.vue')
   },
   {
     path: '/listar-modelo',
