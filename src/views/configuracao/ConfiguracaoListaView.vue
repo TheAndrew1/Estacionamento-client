@@ -13,7 +13,7 @@ export default defineComponent({
         <h2>Listar Configuração</h2>
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-success rounded-0">Cadastrar</button>
+        <router-link to="/formulario-configuracao"><button type="button" class="btn btn-success rounded-0">Cadastrar</button></router-link>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ export default defineComponent({
   </thead>
   <tbody>
     <tr>
-      <td>R$25,00</td>
+      <td>R$0,50</td>
       <td>20</td>
       <td>10</td>
       <td>5</td>

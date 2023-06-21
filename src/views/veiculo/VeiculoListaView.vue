@@ -13,7 +13,7 @@ export default defineComponent({
         <h2>Listar Veículos</h2>
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-success rounded-0">Cadastrar</button>
+        <router-link to="/formulario-veiculo"><button type="button" class="btn btn-success rounded-0">Cadastrar</button></router-link>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ export default defineComponent({
   </thead>
   <tbody>
     <tr>
-      <th>ABC-1234</th>
+      <td>ABC-1234</td>
       <td>Camaro</td>
       <td>Chevrolet</td>
       <td>Carro</td>
@@ -41,7 +41,7 @@ export default defineComponent({
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>ABC-7894</th>
+      <td>ABC-7894</td>
       <td>HB20</td>
       <td>Hyundai</td>
       <td>Carro</td>
@@ -51,7 +51,7 @@ export default defineComponent({
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>XYZ-1234</th>
+      <td>XYZ-1234</td>
       <td>Duster</td>
       <td>Renault</td>
       <td>Carro</td>

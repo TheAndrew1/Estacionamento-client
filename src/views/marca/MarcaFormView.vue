@@ -4,7 +4,7 @@ import { Marca } from '@/model/marca';
 import { MarcaClient } from '@/client/MarcaClient'
 
 export default defineComponent({
-  name: 'ListaMarca',
+  name: 'FormMarca',
   data(){
     return{
       marcaClient: MarcaClient,

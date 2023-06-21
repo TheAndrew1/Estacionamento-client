@@ -13,7 +13,7 @@ export default defineComponent({
         <h2>Listar Modelos</h2>
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-success rounded-0">Cadastrar</button>
+        <router-link to="/formulario-modelo"><button type="button" class="btn btn-success rounded-0">Cadastrar</button></router-link>
       </div>
     </div>
   </div>
@@ -28,21 +28,21 @@ export default defineComponent({
   </thead>
   <tbody>
     <tr>
-      <th>HB20</th>
+      <td>HB20</td>
       <td>Hyundai</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>Camaro</th>
+      <td>Camaro</td>
       <td>Chevrolet</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>Duster</th>
+      <td>Duster</td>
       <td>Renault</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>

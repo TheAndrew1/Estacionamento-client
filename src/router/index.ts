@@ -7,6 +7,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/movimentacao/MovimentacaoListaView.vue')
   },
   {
+    path: '/formulario-movimentacao',
+    name: 'formulario-movimentacao',
+    component: () => import('@/views/movimentacao/MovimentacaoFormView.vue')
+  },
+  {
     path: '/listar-condutor',
     name: 'listar-condutor',
     // route level code-splitting
@@ -15,16 +20,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '@/views/condutor/CondutorListaView.vue')
   },
   {
+    path: '/formulario-condutor',
+    name: 'formulario-condutor',
+    component: () => import('@/views/condutor/CondutorFormView.vue')
+  },
+  {
     path: '/listar-marca',
     name: 'listar-marca',
     component: () => import('@/views/marca/MarcaListaView.vue'),
-    children: 
-    [{
-      // UserProfile will be rendered inside User's <router-view>
-      // when /user/:id/profile is matched
-      path: 'formulario',
-      component: () => import('@/views/marca/MarcaFormView.vue')
-    }]
   },
   {
     path: '/formulario-marca',
@@ -37,14 +40,29 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/modelo/ModeloListaView.vue')
   },
   {
+    path: '/formulario-modelo',
+    name: 'formulario-modelo',
+    component: () => import('@/views/modelo/ModeloFormView.vue')
+  },
+  {
     path: '/listar-veiculo',
     name: 'listar-veiculo',
     component: () => import('@/views/veiculo/VeiculoListaView.vue')
   },
   {
+    path: '/formulario-veiculo',
+    name: 'formulario-veiculo',
+    component: () => import('@/views/veiculo/VeiculoFormView.vue')
+  },
+  {
     path: '/configuracao',
     name: 'configuracao',
     component: () => import('@/views/configuracao/ConfiguracaoListaView.vue')
+  },
+  {
+    path: '/formulario-configuracao',
+    name: 'formulario-configuracao',
+    component: () => import('@/views/configuracao/ConfiguracaoFormView.vue')
   },
 ]
 

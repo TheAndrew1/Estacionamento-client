@@ -13,7 +13,7 @@ export default defineComponent({
         <h2>Listar Condutores</h2>
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-success rounded-0">Cadastrar</button>
+        <router-link to="/formulario-condutor"><button type="button" class="btn btn-success rounded-0">Cadastrar</button></router-link>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@ export default defineComponent({
   </thead>
   <tbody>
     <tr>
-      <th>André Velasco</th>
+      <td>André Velasco</td>
       <td>123.456.789-10</td>
       <td>(45)99973-7762</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
@@ -37,7 +37,7 @@ export default defineComponent({
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>Cleyton Silva</th>
+      <td>Cleyton Silva</td>
       <td>789.456.123-10</td>
       <td>(45)98451-6277</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
@@ -45,7 +45,7 @@ export default defineComponent({
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>Frederico Peiter</th>
+      <td>Frederico Peiter</td>
       <td>456.789.101-23</td>
       <td>(45)99998-2510</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>

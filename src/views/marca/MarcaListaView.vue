@@ -35,19 +35,19 @@ export default defineComponent({
   </thead>
   <tbody>
     <tr>
-      <th>Hyundai</th>
+      <td>Hyundai</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>Chevrolet</th>
+      <td>Chevrolet</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
     <tr>
-      <th>Renault</th>
+      <td>Renault</td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
