@@ -1,14 +1,27 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
+import MarcaClient from '@/client/MarcaClient'
 import { Marca } from '@/model/marca';
-import { MarcaClient } from '@/client/MarcaClient'
 
 export default defineComponent({
   name: 'ListaMarca',
   data(){
     return{
-      marcaClient: MarcaClient,
-      marca: Marca
+      marcas: new Array<Marca>()
+    }
+  },
+  mounted(){
+    this.findAll();
+  },
+  methods: {
+    findAll() {
+      MarcaClient.findAll()
+        .then(sucess => {
+          this.marcas = sucess
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 });
@@ -29,27 +42,20 @@ export default defineComponent({
   <table class="table table-hover table-bordered">
   <thead>
     <tr>
+      <th class="col">Situação</th>
       <th class="col">Nome</th>
       <th colspan="3" class="col-3">Opções</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Hyundai</td>
+    <tr v-for="marca in marcas" :key="marca.id">
+      <td>
+        <span v-if="marca.ativo" class="badge bg-success">Ativo</span>
+        <span v-else class="badge bg-danger">Inativo</span>
+      </td>
+      <td> {{ marca.marca }} </td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
-      <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
-      <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
-    </tr>
-    <tr>
-      <td>Chevrolet</td>
-      <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
-      <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
-      <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
-    </tr>
-    <tr>
-      <td>Renault</td>
-      <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
-      <td><button type="button" class="btn btn-outline-info rounded-0">Editar</button></td>
+      <td><button type="button" class="btn btn-outline-warning rounded-0">Editar</button></td>
       <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
     </tr>
   </tbody>
