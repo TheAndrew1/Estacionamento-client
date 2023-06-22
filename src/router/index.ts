@@ -32,7 +32,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/formulario-marca',
     name: 'formulario-marca',
-    component: () => import('@/views/marca/MarcaFormView.vue')
+    component: () => import('@/views/marca/MarcaFormView.vue'),
+    children: [
+      {
+        path: '/formulario-marca',
+        name: 'formulario-editar-marca',
+        component: () => import('@/views/marca/MarcaFormView.vue')
+      },
+      {
+        path: '/formulario-marca',
+        name: 'formulario-excluir-marca',
+        component: () => import('@/views/marca/MarcaFormView.vue')
+      }
+    ]
   },
   {
     path: '/listar-modelo',
