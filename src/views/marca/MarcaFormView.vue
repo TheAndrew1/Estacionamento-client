@@ -8,12 +8,8 @@ export default defineComponent({
   data(){
     return{
       marca: new Marca(),
+      id: this.$route.query.id,
       form: this.$route.query.form
-    }
-  },
-  computed: {
-    id(){
-      return this.$route.query.id
     }
   },
   methods: {
