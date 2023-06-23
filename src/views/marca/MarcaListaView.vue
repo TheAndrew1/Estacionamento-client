@@ -34,7 +34,7 @@ export default defineComponent({
         <h2>Listar Marca</h2>
       </div>
       <div class="col-2">
-        <router-link to="/formulario-marca"><button type="button" class="btn btn-success rounded-0">Cadastrar</button></router-link>
+        <router-link :to="{name: 'formulario-marca'}" type="button" class="btn btn-success rounded-0">Cadastrar</router-link>
       </div>
     </div>
   </div>
@@ -55,8 +55,8 @@ export default defineComponent({
       </td>
       <td> {{ marca.marca }} </td>
       <td><button type="button" class="btn btn-outline-info rounded-0">Expandir</button></td>
-      <td><button type="button" class="btn btn-outline-warning rounded-0">Editar</button></td>
-      <td><button type="button" class="btn btn-outline-danger rounded-0">Excluir</button></td>
+      <td><router-link :to="{name: 'formulario-editar-marca', query: {id: marca.id, form: 'editar'}}" type="button" class="btn btn-outline-warning rounded-0">Editar</router-link></td>
+      <td><router-link :to="{name: 'formulario-excluir-marca', query: {id: marca.id, form: 'excluir'}}" type="button" class="btn btn-outline-danger rounded-0">Excluir</router-link></td>
     </tr>
   </tbody>
 </table>
