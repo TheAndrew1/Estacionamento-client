@@ -12,6 +12,16 @@ export default defineComponent({
       form: this.$route.query.form
     }
   },
+  computed: {
+    inputDisabled(){
+      if(this.form === "excluir"){
+        return true;
+      }
+      else{
+        return false
+      }
+    }
+  },
   methods: {
     findById(id : number){
       MarcaClient.findById(id).then(response => this.marca = response)
@@ -41,7 +51,7 @@ export default defineComponent({
     <div class="container">
         <div class="row justify-content-center my-3">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control w-25" id="nome" placeholder="Nome da marca" v-model="marca.marca">
+            <input type="text" class="form-control w-25" id="nome" placeholder="Nome da marca" v-model="marca.marca" :disabled=inputDisabled>
         </div>
         <div class="row justify-content-center">
             <div class="col">
