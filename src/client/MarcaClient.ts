@@ -38,27 +38,27 @@ export class MarcaClient{
         }
     }
 
-    public async cadastrar(marca : Marca) : Promise<void> {
+    public async cadastrar(marca : Marca) : Promise<string> {
         try{
-            return (await this.axiosClient.post(`/marca`, marca)).data;
+            return (await this.axiosClient.post<string>(`/marca`, marca)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async editar(id : number, marca : Marca) : Promise<void> {
+    public async editar(id : number, marca : Marca) : Promise<string> {
         try{
-            return (await this.axiosClient.put(`/marca?id=${id}`, marca)).data;
+            return (await this.axiosClient.put<string>(`/marca?id=${id}`, marca)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async excluir(id : number) : Promise<void> {
+    public async excluir(id : number) : Promise<string> {
         try{
-            return (await this.axiosClient.delete(`/marca?id=${id}`)).data;
+            return (await this.axiosClient.delete<string>(`/marca?id=${id}`)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);

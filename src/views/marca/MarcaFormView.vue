@@ -9,7 +9,12 @@ export default defineComponent({
     return{
       marca: new Marca(),
       id: this.$route.query.id,
-      form: this.$route.query.form
+      form: this.$route.query.form,
+      alert: {
+        active: false as boolean,
+        message: "" as string,
+        class: "" as string
+      }
     }
   },
   methods: {
@@ -17,13 +22,54 @@ export default defineComponent({
       MarcaClient.findById(id).then(response => this.marca = response)
     },
     onClickCadastrar(marca : Marca){
-      MarcaClient.cadastrar(marca);
+      if(!this.alert.active){
+        this.alert.active = !this.alert.active
+      }
+
+      MarcaClient.cadastrar(marca)
+        .then(success => {
+          this.alert.message = success;
+          this.alert.class = "alert alert-dismissible alert-success";
+        })
+        .catch(error => {
+          this.alert.message = error.data;
+          this.alert.class = "alert alert-dismissible alert-danger";
+        });
     },
     onClickEditar(id: number, marca : Marca){
-      MarcaClient.editar(id, marca);
+      if(!this.alert.active){
+        this.alert.active = !this.alert.active
+      }
+
+      MarcaClient.editar(id, marca)
+        .then(success => {
+          this.alert.message = success;
+          this.alert.class = "alert alert-dismissible alert-success";
+        })
+        .catch(error => {
+          this.alert.message = error.data;
+          this.alert.class = "alert alert-dismissible alert-danger";
+        });
     },
     onClickExcluir(id : number){
-      MarcaClient.excluir(id);
+      if(!this.alert.active){
+        this.alert.active = !this.alert.active
+      }
+
+      MarcaClient.excluir(id)
+        .then(success => {
+          this.alert.message = success;
+          this.alert.class = "alert alert-dismissible alert-success";
+        })
+        .catch(error => {
+          this.alert.message = error.data;
+          this.alert.class = "alert alert-dismissible alert-danger";
+        });
+    },
+    onClickFechar(){
+      this.alert.active = !this.alert.active;
+      this.alert.message = "";
+      this.alert.class = "";
     }
   },
   mounted(){
@@ -36,6 +82,11 @@ export default defineComponent({
 
 <template>
   <h2>Cadastrar Marca</h2>
+
+  <div class="container" :class="alert.class" role="alert" v-if="alert.active">
+    <div>{{ alert.message }}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="onClickFechar"></button>
+  </div>
 
   <form>
     <div class="container">
