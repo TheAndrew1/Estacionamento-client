@@ -92,7 +92,7 @@ export default defineComponent({
     <div class="container">
         <div class="row justify-content-center my-3">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control w-25" id="nome" placeholder="Nome da marca" v-model="marca.marca" :disabled="form == 'excluir'" autocomplete="off">
+            <input type="text" class="form-control w-25" id="nome" placeholder="Nome da marca" v-model="marca.nome" :disabled="form == 'excluir'" autocomplete="off">
         </div>
         <div class="row justify-content-center">
             <div class="col">

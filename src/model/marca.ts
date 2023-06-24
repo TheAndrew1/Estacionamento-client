@@ -1,7 +1,7 @@
 import { AbstractEntity } from "./abstract-entity";
 
 export class Marca extends AbstractEntity {
-    marca !: string;
+    nome !: string;
 
     constructor() {
         super()
