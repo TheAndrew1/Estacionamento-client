@@ -47,7 +47,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="container-fluid">
+  <main class="container-fluid d-flex justify-content-center align-items-center">
     <div class="row justify-content-center">
       <div class="container">
         <div class="row">

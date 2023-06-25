@@ -7,7 +7,8 @@ export class Modelo extends AbstractEntity {
     marca !: Marca;
 
     constructor() {
-        super()
-        this.ativo = true
+        super();
+        this.marca = new Marca();
+        this.ativo = true;
     }
 }

@@ -25,40 +25,38 @@ export default defineComponent({
       ModeloClient.findById(id).then(response => (this.modelo = response));
     },
     onClickCadastrar(modelo: Modelo) {
-      if (!this.alert.active) {
-        this.alert.active = !this.alert.active;
-      }
-
-      ModeloClient.cadastrar(modelo)
-        .then(success => {
-          this.alert.message = success;
-          this.alert.class = 'alert alert-dismissible alert-success';
-        })
+      MarcaClient.findByNome(modelo.marca.nome).then(success => { modelo.marca = success })
+        .then(() => ModeloClient.cadastrar(modelo)
+          .then(success => {
+            this.alert.message = success;
+            this.alert.class = 'alert alert-dismissible alert-success';
+          }))
         .catch(error => {
           this.alert.message = error.data;
           this.alert.class = 'alert alert-dismissible alert-danger';
         });
+
+      if (!this.alert.active){
+        this.alert.active = !this.alert.active;
+      }
     },
     onClickEditar(id: number, modelo: Modelo) {
-      if (!this.alert.active) {
-        this.alert.active = !this.alert.active;
-      }
-
-      ModeloClient.editar(id, modelo)
-        .then(success => {
-          this.alert.message = success;
-          this.alert.class = 'alert alert-dismissible alert-success';
-        })
+      MarcaClient.findByNome(modelo.marca.nome).then(success => { modelo.marca = success })
+        .then(() => ModeloClient.editar(id, modelo)
+          .then(success => {
+            this.alert.message = success;
+            this.alert.class = 'alert alert-dismissible alert-success';
+          }))
         .catch(error => {
           this.alert.message = error.data;
           this.alert.class = 'alert alert-dismissible alert-danger';
         });
-    },
-    onClickExcluir(id: number) {
+
       if (!this.alert.active) {
         this.alert.active = !this.alert.active;
       }
-
+    },
+    onClickExcluir(id: number) {
       ModeloClient.excluir(id)
         .then(success => {
           this.alert.message = success;
@@ -68,6 +66,10 @@ export default defineComponent({
           this.alert.message = error.data;
           this.alert.class = 'alert alert-dismissible alert-danger';
         });
+
+      if (!this.alert.active) {
+        this.alert.active = !this.alert.active;
+      }
     },
     onClickFechar() {
       this.alert.active = !this.alert.active;
@@ -110,7 +112,7 @@ export default defineComponent({
       </div>
       <div class="row justify-content-center my-3">
         <label for="marca">Marca:</label>
-        <input class="form-control w-25" list="marcas" placeholder="Nome da marca">
+        <input class="form-control w-25" list="marcas" placeholder="Nome da marca" v-model="modelo.marca.nome" :disabled="form == 'excluir'" autocomplete="off">
         <datalist id="marcas">
           <option v-for="marca in marcas" :key="marca.id" :value="marca.nome"></option>
         </datalist>

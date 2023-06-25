@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="container-fluid">
+  <main class="container-fluid d-flex justify-content-center align-items-center">
     <div class="row justify-content-center">
       <div class="container">
         <div class="row">
@@ -73,6 +73,7 @@ export default defineComponent({
           <p class="text-start">Data de cadastro: {{ modelo.cadastro }}</p>
           <p class="text-start">Data de edição: {{ modelo.atualizacao ? modelo.atualizacao : 'Não houve edição' }}</p>
           <p class="text-start">Nome do modelo: {{ modelo.nome }}</p>
+          <p class="text-start">Nome da marca: {{ modelo.marca.nome }}</p>
         </div>
       </div>
 

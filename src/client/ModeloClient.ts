@@ -20,6 +20,15 @@ export class ModeloClient{
         }
     }
 
+    public async findByNome(nome : string) : Promise<Modelo> {
+        try{
+            return (await this.axiosClient.get<Modelo>(`/modelo?name=${nome}`)).data;
+        }
+        catch(error : any){
+            return Promise.reject(error.response);
+        }
+    }
+
     public async findAll() : Promise<Modelo[]> {
         try{
             return (await this.axiosClient.get<Modelo[]>(`/modelo/lista`)).data;

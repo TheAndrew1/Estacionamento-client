@@ -4,7 +4,7 @@ export class Marca extends AbstractEntity {
     nome !: string;
 
     constructor() {
-        super()
-        this.ativo = true
+        super();
+        this.ativo = true;
     }
 }
