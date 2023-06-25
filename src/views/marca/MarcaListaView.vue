@@ -26,12 +26,14 @@ export default defineComponent({
         });
     },
     onClickExpandir(id : number){
-      if(!this.expandir){
-        this.expandir = !this.expandir
-      }
       MarcaClient.findById(id)
         .then(sucess => {
           this.marca = sucess
+        })
+        .then(() => {
+          if (!this.expandir) {
+            this.expandir = !this.expandir;
+          }
         })
         .catch(error => {
           console.log(error);

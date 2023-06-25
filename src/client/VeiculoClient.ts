@@ -38,30 +38,31 @@ export class VeiculoClient{
         }
     }
 
-    public async cadastrar(veiculo : Veiculo) : Promise<void> {
+    public async cadastrar(veiculo : Veiculo) : Promise<string> {
         try{
-            return (await this.axiosClient.post(`/veiculo`, veiculo)).data;
+            return (await this.axiosClient.post<string>(`/veiculo`, veiculo)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async editar(id : number, veiculo : Veiculo) : Promise<void> {
+    public async editar(id : number, veiculo : Veiculo) : Promise<string> {
         try{
-            return (await this.axiosClient.put(`/veiculo?id=${id}`, veiculo)).data;
+            return (await this.axiosClient.put<string>(`/veiculo?id=${id}`, veiculo)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async excluir(id : number) : Promise<void> {
+    public async excluir(id : number) : Promise<string> {
         try{
-            return (await this.axiosClient.delete(`/veiculo?id=${id}`)).data;
+            return (await this.axiosClient.delete<string>(`/veiculo?id=${id}`)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 }
+export default new VeiculoClient()

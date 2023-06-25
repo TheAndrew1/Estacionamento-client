@@ -30,11 +30,12 @@ export default defineComponent({
         .catch(error => {
           this.alert.message = error.data;
           this.alert.class = "alert alert-dismissible alert-danger";
+        })
+        .finally(() => {
+          if (!this.alert.active){
+            this.alert.active = !this.alert.active;
+          }
         });
-
-      if(!this.alert.active){
-        this.alert.active = !this.alert.active
-      }
     },
     onClickEditar(id: number, marca : Marca){
       MarcaClient.editar(id, marca)
@@ -45,11 +46,12 @@ export default defineComponent({
         .catch(error => {
           this.alert.message = error.data;
           this.alert.class = "alert alert-dismissible alert-danger";
+        })
+        .finally(() => {
+          if (!this.alert.active){
+            this.alert.active = !this.alert.active;
+          }
         });
-
-      if(!this.alert.active){
-        this.alert.active = !this.alert.active
-      }
     },
     onClickExcluir(id : number){
       MarcaClient.excluir(id)
@@ -60,11 +62,12 @@ export default defineComponent({
         .catch(error => {
           this.alert.message = error.data;
           this.alert.class = "alert alert-dismissible alert-danger";
+        })
+        .finally(() => {
+          if (!this.alert.active){
+            this.alert.active = !this.alert.active;
+          }
         });
-
-      if(!this.alert.active){
-        this.alert.active = !this.alert.active
-      }
     },
     onClickFechar(){
       this.alert.active = !this.alert.active;

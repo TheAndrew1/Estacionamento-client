@@ -26,12 +26,14 @@ export default defineComponent({
         });
     },
     onClickExpandir(id: number) {
-      if (!this.expandir) {
-        this.expandir = !this.expandir;
-      }
       ModeloClient.findById(id)
         .then(success => {
           this.modelo = success;
+        })
+        .then(() => {
+          if (!this.expandir) {
+            this.expandir = !this.expandir;
+          }
         })
         .catch(error => {
           console.log(error);

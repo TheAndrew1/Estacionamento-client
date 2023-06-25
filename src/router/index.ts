@@ -76,7 +76,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/formulario-veiculo',
     name: 'formulario-veiculo',
-    component: () => import('@/views/veiculo/VeiculoFormView.vue')
+    component: () => import('@/views/veiculo/VeiculoFormView.vue'),
+    children: [
+      {
+        path: '/formulario-veiculo',
+        name: 'formulario-editar-veiculo',
+        component: () => import('@/views/veiculo/VeiculoFormView.vue')
+      },
+      {
+        path: '/formulario-veiculo',
+        name: 'formulario-excluir-veiculo',
+        component: () => import('@/views/veiculo/VeiculoFormView.vue')
+      }
+    ]
   },
   {
     path: '/configuracao',

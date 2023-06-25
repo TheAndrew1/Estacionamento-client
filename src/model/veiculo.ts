@@ -15,7 +15,8 @@ export class Veiculo extends AbstractEntity {
     ano !: number;
 
     constructor() {
-        super()
-        this.ativo = true
+        super();
+        this.modelo = new Modelo();
+        this.ativo = true;
     }
 }
