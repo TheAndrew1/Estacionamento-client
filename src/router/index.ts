@@ -116,11 +116,6 @@ const routes: Array<RouteRecordRaw> = [
         path: '/formulario-configuracao',
         name: 'formulario-editar-configuracao',
         component: () => import('@/views/configuracao/ConfiguracaoFormView.vue')
-      },
-      {
-        path: '/formulario-configuracao',
-        name: 'formulario-excluir-configuracao',
-        component: () => import('@/views/configuracao/ConfiguracaoFormView.vue')
       }
     ]
   }

@@ -73,11 +73,15 @@ export default defineComponent({
           <p class="text-start">Situação: {{ configuracao.ativo ? 'Ativo' : 'Inativo' }}</p>
           <p class="text-start">Data de cadastro: {{ configuracao.cadastro }}</p>
           <p class="text-start">Data de edição: {{ configuracao.atualizacao ? configuracao.atualizacao : 'Não houve edição' }}</p>
-          <p class="text-start">Valor Minuto: {{ configuracao.valorMinuto }}</p>
-          <p class="text-start">Vagas Carro: {{ configuracao.vagasCarro }}</p>
-          <p class="text-start">Vagas Moto: {{ configuracao.vagasMoto }}</p>
-          <p class="text-start">Vagas Van: {{ configuracao.vagasVan }}</p>
+          <p class="text-start">Vagas carro: {{ configuracao.vagasCarro }}</p>
+          <p class="text-start">Vagas moto: {{ configuracao.vagasMoto }}</p>
+          <p class="text-start">Vagas van: {{ configuracao.vagasVan }}</p>
+          <p class="text-start">Valor por minuto: R$ {{ configuracao.valorMinuto }}</p>
+          <p class="text-start">Valor da multa por minuto : R$ {{ configuracao.valorMultaMinuto }}</p>
+          <p class="text-start">Tempo para desconto: {{ configuracao.tempoParaDesconto }} minutos</p>
+          <p class="text-start">Tempo de desconto: {{ configuracao.tempoDesconto }} minutos</p>
           <p class="text-start">Horário Fechamento: {{ configuracao.horarioFecha }}</p>
+          <p class="text-start">Gerar desconto: {{ configuracao.gerarDesconto ? 'Gerar' : 'Não gerar' }}</p>
         </div>
       </div>
 
@@ -90,7 +94,7 @@ export default defineComponent({
             <th class="col">Vagas Moto</th>
             <th class="col">Vagas Van</th>
             <th class="col">Horário Fechamento</th>
-            <th colspan="3" class="col-3">Opções</th>
+            <th colspan="2" class="col-3">Opções</th>
           </tr>
         </thead>
         <tbody>
@@ -106,7 +110,6 @@ export default defineComponent({
             <td> {{ configuracao.horarioFecha }} </td>
             <td><button type="button" class="btn btn-outline-info rounded-0" @click="onClickExpandir(configuracao.id)">Expandir</button></td>
             <td><router-link :to="{ name: 'formulario-editar-configuracao', query: { id: configuracao.id, form: 'editar' } }" type="button" class="btn btn-outline-warning rounded-0">Editar</router-link></td>
-            <td><router-link :to="{ name: 'formulario-excluir-configuracao', query: { id: configuracao.id, form: 'excluir' } }" type="button" class="btn btn-outline-danger rounded-0">Excluir</router-link></td>
           </tr>
         </tbody>
       </table>
