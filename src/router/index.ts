@@ -110,8 +110,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/formulario-configuracao',
     name: 'formulario-configuracao',
-    component: () => import('@/views/configuracao/ConfiguracaoFormView.vue')
-  },
+    component: () => import('@/views/configuracao/ConfiguracaoFormView.vue'),
+    children: [
+      {
+        path: '/formulario-configuracao',
+        name: 'formulario-editar-configuracao',
+        component: () => import('@/views/configuracao/ConfiguracaoFormView.vue')
+      },
+      {
+        path: '/formulario-configuracao',
+        name: 'formulario-excluir-configuracao',
+        component: () => import('@/views/configuracao/ConfiguracaoFormView.vue')
+      }
+    ]
+  }
 ]
 
 const router = createRouter({

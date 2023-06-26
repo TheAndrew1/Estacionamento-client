@@ -20,7 +20,7 @@ export class Configuracao extends AbstractEntity {
     gerarDesconto !: boolean;
 
     constructor() {
-        super()
-        this.ativo = true
+        super();
+        this.ativo = true;
     }
 }
