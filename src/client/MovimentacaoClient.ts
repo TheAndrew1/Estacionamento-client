@@ -38,30 +38,31 @@ export class MovimentacaoClient{
         }
     }
 
-    public async cadastrar(movimentacao : Movimentacao) : Promise<void> {
+    public async cadastrar(movimentacao : Movimentacao) : Promise<string> {
         try{
-            return (await this.axiosClient.post(`/movimentacao`, movimentacao)).data;
+            return (await this.axiosClient.post<string>(`/movimentacao`, movimentacao)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async editar(id : number, movimentacao : Movimentacao) : Promise<void> {
+    public async editar(id : number, movimentacao : Movimentacao) : Promise<string> {
         try{
-            return (await this.axiosClient.put(`/movimentacao?id=${id}`, movimentacao)).data;
+            return (await this.axiosClient.put<string>(`/movimentacao?id=${id}`, movimentacao)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async excluir(id : number) : Promise<void> {
+    public async excluir(id : number) : Promise<string> {
         try{
-            return (await this.axiosClient.delete(`/movimentacao?id=${id}`)).data;
+            return (await this.axiosClient.delete<string>(`/movimentacao?id=${id}`)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 }
+export default new MovimentacaoClient();

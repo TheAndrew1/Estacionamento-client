@@ -26,7 +26,9 @@ export class Movimentacao extends AbstractEntity {
     valorTotal !: number;
 
     constructor() {
-        super()
-        this.ativo = true
+        super();
+        this.veiculo = new Veiculo();
+        this.condutor = new Condutor();
+        this.ativo = true;
     }
 }

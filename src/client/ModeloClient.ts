@@ -74,4 +74,4 @@ export class ModeloClient{
         }
     }
 }
-export default new ModeloClient()
+export default new ModeloClient();

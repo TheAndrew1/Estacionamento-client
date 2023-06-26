@@ -74,4 +74,4 @@ export class MarcaClient{
         }
     }
 }
-export default new MarcaClient()
+export default new MarcaClient();
