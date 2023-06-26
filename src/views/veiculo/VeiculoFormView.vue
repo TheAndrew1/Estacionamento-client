@@ -119,7 +119,7 @@ export default defineComponent({
       </div>
       <div class="row justify-content-center my-3">
         <label for="modelo">Modelo:</label>
-        <input class="form-control w-25" list="modelos" placeholder="Nome do modelo" v-model="veiculo.modelo.nome" :disabled="form == 'excluir'" autocomplete="off">
+        <input class="form-control w-25" id="modelo" list="modelos" placeholder="Nome do modelo" v-model="veiculo.modelo.nome" :disabled="form == 'excluir'" autocomplete="off">
         <datalist id="modelos">
           <option v-for="modelo in modelos" :key="modelo.id" :value="modelo.nome"></option>
         </datalist>
@@ -137,7 +137,7 @@ export default defineComponent({
       <div class="row justify-content-center my-3">
         <label for="cor">Cor:</label>
         <select class="form-select w-25" id="cor" v-model="veiculo.cor" :disabled="form == 'excluir'">
-          <option v-for="cor in corEnum" :value=cor.valueOf()> {{ cor.toString() }}</option>
+          <option v-for="cor in corEnum" :value=cor.valueOf()> {{ cor.valueOf() }}</option>
         </select>
       </div>
       <div class="row justify-content-center">

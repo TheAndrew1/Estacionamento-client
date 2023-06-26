@@ -22,7 +22,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/formulario-condutor',
     name: 'formulario-condutor',
-    component: () => import('@/views/condutor/CondutorFormView.vue')
+    component: () => import('@/views/condutor/CondutorFormView.vue'),
+    children: [
+      {
+        path: '/formulario-condutor',
+        name: 'formulario-editar-condutor',
+        component: () => import('@/views/condutor/CondutorFormView.vue')
+      },
+      {
+        path: '/formulario-condutor',
+        name: 'formulario-excluir-condutor',
+        component: () => import('@/views/condutor/CondutorFormView.vue')
+      }
+    ]
   },
   {
     path: '/listar-marca',

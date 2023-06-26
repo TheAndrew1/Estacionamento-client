@@ -38,30 +38,31 @@ export class CondutorClient{
         }
     }
 
-    public async cadastrar(condutor : Condutor) : Promise<void> {
+    public async cadastrar(condutor : Condutor) : Promise<string> {
         try{
-            return (await this.axiosClient.post(`/condutor`, condutor)).data;
+            return (await this.axiosClient.post<string>(`/condutor`, condutor)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async editar(id : number, condutor : Condutor) : Promise<void> {
+    public async editar(id : number, condutor : Condutor) : Promise<string> {
         try{
-            return (await this.axiosClient.put(`/condutor?id=${id}`, condutor)).data;
+            return (await this.axiosClient.put<string>(`/condutor?id=${id}`, condutor)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 
-    public async excluir(id : number) : Promise<void> {
+    public async excluir(id : number) : Promise<string> {
         try{
-            return (await this.axiosClient.delete(`/condutor?id=${id}`)).data;
+            return (await this.axiosClient.delete<string>(`/condutor?id=${id}`)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);
         }
     }
 }
+export default new CondutorClient();
