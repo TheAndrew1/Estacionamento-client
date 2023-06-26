@@ -54,7 +54,7 @@ export default defineComponent({
             <h2>Listar Configuração</h2>
           </div>
           <div class="col-2">
-            <router-link :to="{ name: 'formulario-configuracao' }" type="button" class="btn btn-success rounded-0">Cadastrar</router-link>
+            <router-link v-if="!configuracao" :to="{ name: 'formulario-configuracao' }" type="button" class="btn btn-success rounded-0">Cadastrar</router-link>
           </div>
         </div>
       </div>
