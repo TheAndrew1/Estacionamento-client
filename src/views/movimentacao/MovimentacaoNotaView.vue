@@ -39,10 +39,10 @@ export default defineComponent({
           <p class="text-start">Modelo do veículo: {{ movimentacao.veiculo.modelo.nome }}</p>
           <p class="text-start">Horário de entrada: {{ movimentacao.entrada }}</p>
           <p class="text-start">Horário de saída: {{ movimentacao.saida ? movimentacao.saida : "Movimentação em aberto" }}</p>
-          <p class="text-start">Tempo: {{ movimentacao.tempo ? movimentacao.tempoMulta : '0' }} minutos</p>
+          <p class="text-start">Tempo: {{ movimentacao.tempo ? movimentacao.tempo : '0' }} minutos</p>
           <p class="text-start">Tempo de multa: {{ movimentacao.tempoMulta ? movimentacao.tempoMulta : '0' }} minutos</p>
           <p class="text-start">Tempo de desconto: {{ movimentacao.tempoDesconto ? movimentacao.tempoDesconto : '0' }} minutos</p>
-          <p class="text-start">Valor: R$ {{ movimentacao.valor ? movimentacao.valorMulta : '0' }}</p>
+          <p class="text-start">Valor: R$ {{ movimentacao.valor ? movimentacao.valor : '0' }}</p>
           <p class="text-start">Valor da multa: R$ {{ movimentacao.valorMulta ? movimentacao.valorMulta : '0' }}</p>
           <p class="text-start">Valor do desconto: R$ {{ movimentacao.valorDesconto ? movimentacao.valorDesconto : '0' }}</p>
           <p class="text-start">Valor total: R$ {{ movimentacao.valorTotal }}</p>

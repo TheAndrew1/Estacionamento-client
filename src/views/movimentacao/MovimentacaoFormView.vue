@@ -58,13 +58,23 @@ export default defineComponent({
           this.alert.class = 'alert alert-dismissible alert-danger';
         })
         .finally(() => {
-          if(this.form != "fechar"){
-            if (!this.alert.active){
-              this.alert.active = !this.alert.active;
-          }}
-          else{
-            this.$router.push({ name: 'nota-movimentacao', query: { id: id } })
+          if (!this.alert.active){
+            this.alert.active = !this.alert.active;
           }
+        });
+    },
+    onClickFinalizar(id: number, movimentacao: Movimentacao) {
+      MovimentacaoClient.editar(id, movimentacao)
+        .then(success => {
+          this.alert.message = success;
+          this.alert.class = 'alert alert-dismissible alert-success';
+        })
+        .catch(error => {
+          this.alert.message = error.data;
+          this.alert.class = 'alert alert-dismissible alert-danger';
+        })
+        .finally(() => {
+          this.$router.push({ name: 'nota-movimentacao', query: { id: id } })
         });
     },
     onClickExcluir(id: number) {
@@ -137,14 +147,14 @@ export default defineComponent({
           <label for="veiculo">Veículo:</label>
           <input class="form-control w-25" id="veiculo" list="veiculos" placeholder="Placa do veículo" v-model="movimentacao.veiculo.placa" :disabled="form == 'excluir'" autocomplete="off">
           <datalist id="veiculos">
-            <option v-for="veiculo in veiculos" :key="veiculo.id" :value="veiculo.placa"></option>
+            <option v-for="veiculo in veiculos" :key="veiculo.id" :label="veiculo.modelo.nome" :value="veiculo.placa"></option>
           </datalist>
         </div>
         <div class="row justify-content-center my-3">
           <label for="condutor">Condutor:</label>
           <input class="form-control w-25" id="condutor" list="condutores" placeholder="CPF do condutor" v-model="movimentacao.condutor.cpf" :disabled="form == 'excluir'" autocomplete="off">
           <datalist id="condutores">
-            <option v-for="condutor in condutores" :key="condutor.id" :value="condutor.cpf"></option>
+            <option v-for="condutor in condutores" :key="condutor.id" :label="condutor.nome" :value="condutor.cpf"></option>
           </datalist>
         </div>
       </div>
@@ -162,8 +172,8 @@ export default defineComponent({
       <div class="row justify-content-center">
         <div class="col">
           <button v-if="form === undefined" type="button" class="btn btn-outline-success rounded-0" @click="onClickCadastrar(movimentacao)">Cadastrar</button>
-          <button v-if="form === 'fechar'" type="button" class="btn btn-outline-primary rounded-0" @click="onClickEditar(Number(id), movimentacao)">Fechar</button>
-          <button v-if="form === 'editar'" type="button" class="btn btn-outline-warning rounded-0" @click="onClickEditar(Number(id), movimentacao)">Editar</button>
+          <button v-if="form === 'fechar'" type="button" class="btn btn-outline-primary rounded-0" @click="onClickFinalizar(Number(id), movimentacao)">Fechar</button>
+          <button v-if="form === 'editar'" type="button" class="btn btn-outline-warning rounded-0" @click="onClickCadastrar(movimentacao)">Editar</button>
           <button v-if="form === 'excluir'" type="button" class="btn btn-outline-danger rounded-0" @click="onClickExcluir(Number(id))">Excluir</button>
         </div>
             

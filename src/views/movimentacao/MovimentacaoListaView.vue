@@ -15,6 +15,7 @@ export default defineComponent({
   },
   created() {
     this.findAll();
+    this.findAtivo();
   },
   methods: {
     findAll() {
@@ -29,7 +30,7 @@ export default defineComponent({
     findAtivo() {
       MovimentacaoClient.findAtivo()
         .then(success => {
-          this.movimentacoes = success;
+          this.movimentacoesAbertas = success;
         })
         .catch(error => {
           console.log(error);
