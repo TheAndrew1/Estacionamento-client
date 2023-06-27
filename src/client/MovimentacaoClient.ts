@@ -31,7 +31,7 @@ export class MovimentacaoClient{
 
     public async findAtivo() : Promise<Movimentacao[]> {
         try{
-            return (await this.axiosClient.get<Movimentacao[]>(`/movimentacao/ativos`)).data;
+            return (await this.axiosClient.get<Movimentacao[]>(`/movimentacao/abertas`)).data;
         }
         catch(error : any){
             return Promise.reject(error.response);

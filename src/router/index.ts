@@ -29,8 +29,8 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
-    path: '/nota-nota',
-    name: 'nota-nota',
+    path: '/nota-movimentacao',
+    name: 'nota-movimentacao',
     component: () => import('@/views/movimentacao/MovimentacaoNotaView.vue')
   },
   {

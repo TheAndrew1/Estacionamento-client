@@ -8,8 +8,9 @@ export default defineComponent({
   data() {
     return {
       movimentacoes: new Array<Movimentacao>(),
-      expandir: false as boolean,
-      movimentacao: new Movimentacao()
+      movimentacoesAbertas: new Array<Movimentacao>(),
+      movimentacao: new Movimentacao(),
+      abertas: false as boolean
     };
   },
   created() {
@@ -25,23 +26,14 @@ export default defineComponent({
           console.log(error);
         });
     },
-    onClickExpandir(id: number) {
-      MovimentacaoClient.findById(id)
+    findAtivo() {
+      MovimentacaoClient.findAtivo()
         .then(success => {
-          this.movimentacao = success;
-        })
-        .then(() => {
-          if (!this.expandir) {
-            this.expandir = !this.expandir;
-          }
+          this.movimentacoes = success;
         })
         .catch(error => {
           console.log(error);
         });
-    },
-    onClickFechar() {
-      this.expandir = !this.expandir;
-      this.movimentacao = new Movimentacao();
     }
   }
 });
@@ -61,38 +53,10 @@ export default defineComponent({
         </div>
       </div>
 
-      <div class="container border border-black rounded-3 w-35 z-3 position-fixed bg-white py-2" v-if="expandir">
-        <div class="row mb-2 px-2 align-items-center">
-          <div class="col">
-            <h2> Movimentação {{ movimentacao.id }}</h2>
-          </div>
-          <div class="col-1">
-            <button type="button" class="btn-close d-inline" @click="onClickFechar"></button>
-          </div>
-        </div>
-
-        <div class="row px-2">
-          <p class="text-start">Situação: {{ movimentacao.ativo  ? 'Aberta' : 'Finalizada' }}</p>
-          <p class="text-start">Nome do condutor: {{ movimentacao.condutor.nome }}</p>
-          <p class="text-start">CPF do condutor: {{ movimentacao.condutor.cpf }}</p>
-          <p class="text-start">Placa do veículo: {{ movimentacao.veiculo.placa }}</p>
-          <p class="text-start">Modelo do veículo: {{ movimentacao.veiculo.modelo.nome }}</p>
-          <p class="text-start">Horário de entrada: {{ movimentacao.entrada }}</p>
-          <p class="text-start">Horário de saída: {{ movimentacao.saida ? movimentacao.saida : 'Movimentação em aberto' }}</p>
-          <p class="text-start">Tempo: {{ movimentacao.tempo ? movimentacao.tempo : 'Movimentação em aberto' }} minutos</p>
-          <p class="text-start">Tempo de multa: {{ movimentacao.tempoMulta ? movimentacao.tempoMulta : 'Movimentação em aberto' }} minutos</p>
-          <p class="text-start">Tempo de desconto: {{ movimentacao.tempoDesconto ? movimentacao.tempoDesconto : 'Movimentação em aberto' }} minutos</p>
-          <p class="text-start">Valor: R$ {{ movimentacao.valor ? movimentacao.valor : 'Movimentação em aberto' }}</p>
-          <p class="text-start">Valor da multa: R$ {{ movimentacao.valorMulta ? movimentacao.valorMulta : 'Movimentação em aberto' }}</p>
-          <p class="text-start">Valor do desconto: R$ {{ movimentacao.valorDesconto ? movimentacao.valorDesconto : 'Movimentação em aberto' }}</p>
-          <p class="text-start">Valor total: R$ {{ movimentacao.valorTotal ? movimentacao.valorTotal : 'Movimentação em aberto' }}</p>
-        </div>
-      </div>
-
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
-            <th class="col">Situação</th>
+            <th class="col">Situação | <input type="checkbox" v-model="abertas"></th>
             <th class="col">Placa Veíuclo</th>
             <th class="col">Nome Condutor</th>
             <th class="col">Horário Entrada</th>
@@ -108,10 +72,10 @@ export default defineComponent({
             <td> {{ item.veiculo.placa }} </td>
             <td> {{ item.condutor.nome }} </td>
             <td> {{ item.entrada }} </td>
-            <td><button type="button" class="btn btn-outline-info rounded-0" @click="onClickExpandir(item.id)">Expandir</button></td>
-            <td><router-link :to="{ name: 'formulario-fechar-movimentacao', query: { id: item.id, form: 'fechar' } }" type="button" class="btn btn-outline-primary rounded-0">Fechar</router-link></td>
-            <td><router-link :to="{ name: 'formulario-editar-movimentacao', query: { id: item.id, form: 'editar' } }" type="button" class="btn btn-outline-warning rounded-0">Editar</router-link></td>
-            <td><router-link :to="{ name: 'formulario-excluir-movimentacao', query: { id: item.id, form: 'excluir' } }" type="button" class="btn btn-outline-danger rounded-0">Excluir</router-link></td>
+            <td><router-link :to="{ name: 'nota-movimentacao', query: { id: item.id } }" type="button" class="btn btn-outline-info rounded-0">Expandir</router-link></td>
+            <td v-if="item.ativo"><router-link :to="{ name: 'formulario-fechar-movimentacao', query: { id: item.id, form: 'fechar' } }" type="button" class="btn btn-outline-primary rounded-0">Fechar</router-link></td>
+            <td v-if="item.ativo"><router-link :to="{ name: 'formulario-editar-movimentacao', query: { id: item.id, form: 'editar' } }" type="button" class="btn btn-outline-warning rounded-0">Editar</router-link></td>
+            <td v-if="item.ativo"><router-link :to="{ name: 'formulario-excluir-movimentacao', query: { id: item.id, form: 'excluir' } }" type="button" class="btn btn-outline-danger rounded-0">Excluir</router-link></td>
           </tr>
         </tbody>
       </table>

@@ -58,8 +58,12 @@ export default defineComponent({
           this.alert.class = 'alert alert-dismissible alert-danger';
         })
         .finally(() => {
-          if (!this.alert.active){
-            this.alert.active = !this.alert.active;
+          if(this.form != "fechar"){
+            if (!this.alert.active){
+              this.alert.active = !this.alert.active;
+          }}
+          else{
+            this.$router.push({ name: 'nota-movimentacao', query: { id: id } })
           }
         });
     },
@@ -149,12 +153,16 @@ export default defineComponent({
           <label for="horario-saida">Horário de saída:</label>
           <input type="datetime-local" class="form-control w-25" id="horario-saida" v-model="movimentacao.saida">
         </div>
+        <!-- <div class="row justify-content-center my-3">
+          <label for="tempo-desconto">Tempo de desconto:</label>
+          <input type="number" class="form-control w-25" id="tempo-desconto" v-model="movimentacao.tempoDesconto">
+        </div> -->
       </div>
 
       <div class="row justify-content-center">
         <div class="col">
           <button v-if="form === undefined" type="button" class="btn btn-outline-success rounded-0" @click="onClickCadastrar(movimentacao)">Cadastrar</button>
-          <router-link :to="{ name: 'nota-nota', query: { id: id } }" v-if="form === 'fechar'" type="button" class="btn btn-outline-primary rounded-0" @click="onClickEditar(Number(id), movimentacao)">Fechar</router-link>
+          <button v-if="form === 'fechar'" type="button" class="btn btn-outline-primary rounded-0" @click="onClickEditar(Number(id), movimentacao)">Fechar</button>
           <button v-if="form === 'editar'" type="button" class="btn btn-outline-warning rounded-0" @click="onClickEditar(Number(id), movimentacao)">Editar</button>
           <button v-if="form === 'excluir'" type="button" class="btn btn-outline-danger rounded-0" @click="onClickExcluir(Number(id))">Excluir</button>
         </div>
