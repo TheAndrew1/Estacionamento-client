@@ -56,7 +56,7 @@ export default defineComponent({
             <h2>Listar Movimentação</h2>
           </div>
           <div class="col-2">
-            <router-link :to="{ name: 'formulario-movimentacao' }" type="button" class="btn btn-success rounded-0">Cadastrar</router-link>
+            <router-link :to="{ name: 'formulario-movimentacao' }" type="button" class="btn btn-success rounded-0">Registrar entrada</router-link>
           </div>
         </div>
       </div>
@@ -72,9 +72,11 @@ export default defineComponent({
         </div>
 
         <div class="row px-2">
-          <p class="text-start">Situação: {{ movimentacao.ativo  ? 'Ativo' : 'Inativo' }}</p>
+          <p class="text-start">Situação: {{ movimentacao.ativo  ? 'Aberta' : 'Finalizada' }}</p>
           <p class="text-start">Nome do condutor: {{ movimentacao.condutor.nome }}</p>
+          <p class="text-start">CPF do condutor: {{ movimentacao.condutor.cpf }}</p>
           <p class="text-start">Placa do veículo: {{ movimentacao.veiculo.placa }}</p>
+          <p class="text-start">Modelo do veículo: {{ movimentacao.veiculo.modelo.nome }}</p>
           <p class="text-start">Horário de entrada: {{ movimentacao.entrada }}</p>
           <p class="text-start">Horário de saída: {{ movimentacao.saida ? movimentacao.saida : 'Movimentação em aberto' }}</p>
           <p class="text-start">Tempo: {{ movimentacao.tempo ? movimentacao.tempo : 'Movimentação em aberto' }} minutos</p>
@@ -94,19 +96,20 @@ export default defineComponent({
             <th class="col">Placa Veíuclo</th>
             <th class="col">Nome Condutor</th>
             <th class="col">Horário Entrada</th>
-            <th colspan="3" class="col-3">Opções</th>
+            <th colspan="4" class="col-3">Opções</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in movimentacoes" :key="item.id">
             <td>
-              <span v-if="item.ativo" class="badge bg-success">Ativo</span>
-              <span v-else class="badge bg-danger">Inativo</span>
+              <span v-if="item.ativo" class="badge bg-success">Aberta</span>
+              <span v-else class="badge bg-danger">Finalizada</span>
             </td>
             <td> {{ item.veiculo.placa }} </td>
             <td> {{ item.condutor.nome }} </td>
             <td> {{ item.entrada }} </td>
             <td><button type="button" class="btn btn-outline-info rounded-0" @click="onClickExpandir(item.id)">Expandir</button></td>
+            <td><router-link :to="{ name: 'formulario-fechar-movimentacao', query: { id: item.id, form: 'fechar' } }" type="button" class="btn btn-outline-primary rounded-0">Fechar</router-link></td>
             <td><router-link :to="{ name: 'formulario-editar-movimentacao', query: { id: item.id, form: 'editar' } }" type="button" class="btn btn-outline-warning rounded-0">Editar</router-link></td>
             <td><router-link :to="{ name: 'formulario-excluir-movimentacao', query: { id: item.id, form: 'excluir' } }" type="button" class="btn btn-outline-danger rounded-0">Excluir</router-link></td>
           </tr>

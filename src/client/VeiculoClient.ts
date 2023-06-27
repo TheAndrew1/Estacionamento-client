@@ -20,6 +20,15 @@ export class VeiculoClient{
         }
     }
 
+    public async findByPlaca(placa : string) : Promise<Veiculo> {
+        try{
+            return (await this.axiosClient.get<Veiculo>(`/veiculo?placa=${placa}`)).data;
+        }
+        catch(error : any){
+            return Promise.reject(error.response);
+        }
+    }
+
     public async findAll() : Promise<Veiculo[]> {
         try{
             return (await this.axiosClient.get<Veiculo[]>(`/veiculo/lista`)).data;

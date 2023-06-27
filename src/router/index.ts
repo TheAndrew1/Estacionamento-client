@@ -13,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '/formulario-movimentacao',
+        name: 'formulario-fechar-movimentacao',
+        component: () => import('@/views/movimentacao/MovimentacaoFormView.vue')
+      },
+      {
+        path: '/formulario-movimentacao',
         name: 'formulario-editar-movimentacao',
         component: () => import('@/views/movimentacao/MovimentacaoFormView.vue')
       },

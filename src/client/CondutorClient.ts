@@ -20,6 +20,15 @@ export class CondutorClient{
         }
     }
 
+    public async findByCpf(cpf : string) : Promise<Condutor> {
+        try{
+            return (await this.axiosClient.get<Condutor>(`/condutor?cpf=${cpf}`)).data;
+        }
+        catch(error : any){
+            return Promise.reject(error.response);
+        }
+    }
+
     public async findAll() : Promise<Condutor[]> {
         try{
             return (await this.axiosClient.get<Condutor[]>(`/condutor/lista`)).data;
