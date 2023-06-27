@@ -9,7 +9,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/formulario-movimentacao',
     name: 'formulario-movimentacao',
-    component: () => import('@/views/movimentacao/MovimentacaoFormView.vue')
+    component: () => import('@/views/movimentacao/MovimentacaoFormView.vue'),
+    children: [
+      {
+        path: '/formulario-movimentacao',
+        name: 'formulario-editar-movimentacao',
+        component: () => import('@/views/movimentacao/MovimentacaoFormView.vue')
+      },
+      {
+        path: '/formulario-movimentacao',
+        name: 'formulario-excluir-movimentacao',
+        component: () => import('@/views/movimentacao/MovimentacaoFormView.vue')
+      }
+    ]
   },
   {
     path: '/listar-condutor',
