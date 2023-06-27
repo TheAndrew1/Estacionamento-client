@@ -154,7 +154,7 @@ export default defineComponent({
       <div class="row justify-content-center">
         <div class="col">
           <button v-if="form === undefined" type="button" class="btn btn-outline-success rounded-0" @click="onClickCadastrar(movimentacao)">Cadastrar</button>
-          <button v-if="form === 'fechar'" type="button" class="btn btn-outline-primary rounded-0" @click="onClickEditar(Number(id), movimentacao)">Fechar</button>
+          <router-link :to="{ name: 'nota-nota', query: { id: id } }" v-if="form === 'fechar'" type="button" class="btn btn-outline-primary rounded-0" @click="onClickEditar(Number(id), movimentacao)">Fechar</router-link>
           <button v-if="form === 'editar'" type="button" class="btn btn-outline-warning rounded-0" @click="onClickEditar(Number(id), movimentacao)">Editar</button>
           <button v-if="form === 'excluir'" type="button" class="btn btn-outline-danger rounded-0" @click="onClickExcluir(Number(id))">Excluir</button>
         </div>

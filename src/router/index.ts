@@ -29,6 +29,11 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: '/nota-nota',
+    name: 'nota-nota',
+    component: () => import('@/views/movimentacao/MovimentacaoNotaView.vue')
+  },
+  {
     path: '/listar-condutor',
     name: 'listar-condutor',
     // route level code-splitting
